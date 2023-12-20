@@ -4,9 +4,6 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotInteractableException
 from bs4 import BeautifulSoup
 import pyautogui
 
@@ -59,43 +56,11 @@ while keep_going:
         print(f"New text block: {text_block}")
 
         text_block = text_block[text_block.index(search_string):].replace(search_string, " ")
-        print(f"Next text block: {text_block}")  
+        print(f"Next text block: {text_block}")
+        time.sleep(0.5)
     except Exception as e:
         print(e)
         keep_going = False
         browser.quit()
 
-
-
-
-
-
-
-
-
-
-# active_word = True
-# while active_word:
-#     try:
-#         active_word = browser.find_element(By.CSS_SELECTOR,".word.active")
-#         # let's type the word 
-#         action_chains = ActionChains(browser)
-
-#         # get the text of the active word and send it
-#         word = active_word.text
-#         action_chains.send_keys(word).perform()
-#         action_chains.send_keys(Keys.SPACE).perform()
-#     except NoSuchElementException as e:
-#         print("No such element found")
-#         active_word = False
-#         browser.quit()
-#     except ElementNotInteractableException as e:
-#         print("Element is not interactable")
-#         active_word = False
-#         browser.quit()
-#     except Exception as e:
-#         print(e)
-#         active_word = False
-#         browser.quit()
-    
 
